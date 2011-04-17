@@ -1,0 +1,199 @@
+# -*- org -*-
+
+* Plan
+** Intro
+*** Scope
+   Due to time limits
+*** we will discuss:
+    - basic sequential Erlang features
+    - most useful basic modules
+    - basic tools used to develop with Erlang
+    - basics of gen_event behavior
+    - documentation navigation
+*** we won't discuss:
+   - distributed stuff
+   - OTP libraries (apart from gen_event)
+   - databases
+   - monitoring, operation and maintenance modules
+   - most of stdlib modules
+   - most interface modules
+   - more advanced tools (i.e. profilers)
+*** The goal
+   We want to build server that is
+   - Fault tolerant
+     + If user process crashes, no other user can be affected
+     + If a feature process crashes user can see only that feature
+       crash (In particular the user should be able to play)
+     + If the machine crashes all users should be able to play on
+       another machine
+   - Live upgradable
+     + We should be able to upgrade the game without shutting it down
+   - Measurable
+     + For every feature we want to know exactly how the user is using
+       it (so we can improve his experience)
+*** Web
+   http://www.erlang.org/doc/
+   http://demo.erlang.org/erldoc
+   http://www.erlang.se/doc/programming_rules.shtml
+   http://learnyousomeerlang.com/contents
+   http://www.tryerlang.org/
+*** Books
+   - Making reliable distributed system in the presence of software errors
+     http://www.erlang.org/download/armstrong_thesis_2003.pdf
+   - Erlang Programming
+     http://liancheng.info/bib/Cesarini2009.pdf
+   - Programming Erlang
+     http://media.pragprog.com/titles/jaerlang/Concurrent.pdf
+   - Erlang and OTP in Action
+     http://www.csc.lsu.edu/~kundu/distComp/Erlang-OTP-action-book.pdf
+   - Concurrent programming in erlang
+     http://www.erlang.org/download/erlang-book-part1.pdf
+*** Navigating in Erlang documentation
+   - http://www.erlang.org/doc/
+   - Applications
+   - example: Mnesia "Reference Manual" vs "User's Guide"
+** Sequential Erlang
+   - numbers
+   - atoms
+   - variables (single assignment)
+   - strings (lists, binaries)
+   - lists
+   - tuples
+   - records (relationship with tuples, shell)
+   - macros
+   - pattern matching
+   - list comprehensions
+   - functions, funs
+   - guards, BIFs
+   - missing clause
+   - recursion, tail recursion
+   - foldl, foldr, map
+   - conditionals
+*** don't use
+   - catch (use try...catch if you have to)
+   - process dictionary (put, get)
+   - process_info
+** Event manager
+** Testing
+   - unit testing
+   - property based testing
+   - what happens if the process is crashed?
+** Basic libraries
+*** kernel
+   - sasl (error_logger)
+   - code
+   - application
+   - auth
+   - file
+   - seq_trace
+*** stdlib
+   - ets
+   - io:format
+   - lists
+   - proplists
+   - random
+   - sets
+   - string
+   - timer
+   - others
+     + array
+     + base64
+     + binary (for binary data)
+     + calendar
+     + filelib
+     + filename
+     + io
+     + math
+     + queue
+     + re (regexp is obsolete!)
+     + qlc
+     + sofs (sets of sets)
+     + ...
+*** monitoring
+    - cpu_sup
+    - diskup
+    - memsup
+    - ...
+*** interface
+    - crypto
+    - inets
+    - ftp
+    - tfpt
+    - http
+    - jinterface
+    - xmerl (xml)
+    - ssh
+    - ssl
+    - wxErlang
+    - ...
+** The shell and tools
+   - rebar
+   - erlang-mode
+   - distel
+   - erlide
+   - erl
+   - debugger
+   - process manager
+   - c (command interface)
+   - dbg
+   - table visualizer
+   - dialyzer
+   - typer
+   - app monitor
+   - etop
+   - toolbar
+   - edoc
+** The rules
+   - isolate "tricky" or "dirty" code into separate modules
+   - don't make assumptions about what the caller will do with the
+     results of the function (i.e. bad args!)
+   - don't use clipboard inheritance
+   - don't optimize code
+   - try to eliminate side effects
+   - make code as deterministic as possible
+   - don't program defensively (example with case)
+   - separate error handling and normal case code
+   - tag messages and returned values
+   - write tail recursive functions if possible
+   - 15-20 LOC functions
+   - < 400 LOC modules
+   - < 80 characters lines
+   - ThisIsVariableName, this_is_function_or_atom_name
+   - {12, 23, 45} (not {12,23,45} or { 12, 23, 45 })
+   - Don't put your name in the code
+   - Document all the errors (and warnings)
+   - Don't comment out old code - remove it
+   - more at http://www.erlang.se/doc/programming_rules.shtml
+* Logging
+** start SASL (on named node!)
+   application:start(sasl).
+** logging levels
+   To all \*_msg functions you can pass one or two terms which will be
+   printed. The interface is as in io:format()
+*** error
+    - error_logger:error_msg
+    - some action must be taken immediately. Otherwise
+      + the system will go down
+      + the system will become unusable for users
+*** warning
+   - error_logger:warning_msg
+   - use +W w (erl argument) to mark warnings as warnings (they are
+     errors by default)
+   - things that should not happen but are not errors
+   - something *bad* happend but could be worked around
+*** info
+   - error_logger:info_msg
+   - use for everything else (used most of the time)
+** logging to file
+*** open
+   - ok = error_logger:logfile({open, "/tmp/logs"})
+*** close
+   - ok = error_logger:logfile(close)
+*** get file name
+   - error_logger:logfile(filename)
+** output on console
+*** turn off
+    error_logger:tty(false)
+*** turn on
+    error_logger:tty(true)
+** 
