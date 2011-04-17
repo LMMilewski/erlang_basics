@@ -58,5 +58,11 @@ spawn_nosasl() ->
     application:stop(sasl),
     proc_lib:spawn(fun die/0). % this gives us a lot of error report text
 
+%% NOTE ON proc_lib
+%%  proc_lib:spawn is the same as spawn but also runs some code that
+%%  works with SASL. Usually behaviours do that for us. If you spawn
+%%  anything without using behaviours, you should use proc_lib:spawn
+%%  instead of spawn
+
 die() ->
     this_wont = match.
