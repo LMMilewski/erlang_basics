@@ -1,5 +1,6 @@
 -module(logging).
--export([run/0]).
+-export([run/0, spawn_sasl/0, spawn_nosasl/0]).
+-export([die/0]).
 
 -define(LOGFILE, "/tmp/logs").
 
@@ -46,3 +47,16 @@ run() ->
     error_logger:tty(true), % turn on tty logging
     error_logger:info_msg("this message will be printed only to the tty").
 
+
+%% this will give us a lot of information when function 'die' crashes
+spawn_sasl() ->
+    application:start(sasl),
+    proc_lib:spawn(fun die/0). % this gives us a lot of error report text
+
+%% this won't give us any useful information when function 'die' crashes
+spawn_nosasl() ->
+    application:stop(sasl),
+    proc_lib:spawn(fun die/0). % this gives us a lot of error report text
+
+die() ->
+    this_wont = match.
