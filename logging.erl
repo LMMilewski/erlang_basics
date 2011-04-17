@@ -9,6 +9,7 @@
 
 run() ->
     %% first start System Application Support Libraries
+    %% this will give you *much* more error info when something crashes
     application:start(sasl),
 
     %% the format of all functions is like io:format
