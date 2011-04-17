@@ -9,7 +9,7 @@
 
 run() ->
     %% first start System Application Support Libraries
-    application:start(sasl), 
+    application:start(sasl),
 
     %% the format of all functions is like io:format
     %% i.e.
