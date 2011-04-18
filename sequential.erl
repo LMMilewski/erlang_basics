@@ -1,5 +1,5 @@
 -module(sequential).
--export([data_types/0, pattern_matching/0, all_fibs/1, all_squared/1]).
+-export([data_types/0, pattern_matching/0, all_fibs/1, all_squared/1, quicksort/1, reverse/1, reverse2/1]).
 
 %% All basic stuff is explained here
 %%  http://www.erlang.org/doc/reference_manual/users_guide.html
@@ -245,3 +245,69 @@ all_squared(N) ->
                   A*A
           end,
     lists:map(Fun, lists:seq(1,N)). % apply Fun to every element in [1..N]
+
+
+%%% recursion, tail recursion
+%%
+%% In Erlang there you can't use loops. You have much more powerful
+%% mechanism - recursion. Recursive functions is a function that calls
+%% itself (could be indirectly - function A calls function B which
+%% calls A again)
+%%
+%% our fib and fib2 were recursive. Resursion allows you to write
+%% short, concise code. For example we could implement quicksort like
+%% this
+quicksort([]) ->
+    [];
+quicksort([E]) ->
+    [E];
+quicksort([H|T]) ->
+    quicksort([E || E <- T, E =< H]) ++ [H] ++ quicksort([E || E <- T, E > H]).
+
+%% look at reverse function that reverses a list. What's wrong with this function?
+reverse([]) ->
+    [];
+reverse([H|T]) ->
+    reverse(T) ++ [H].
+%% if you don't know - try calling it like this
+%% sequential:reverse(lists:seq(1,10000))
+%% sequential:reverse(lists:seq(1,100000))
+%% and see how much time it takes. Unfortunatly our algorithm uses O(n^2) time and O(n) memory (why?)
+%%
+%% The problem with this code is that ++ is last operation executed in
+%% reverse. This means that every call to reverse must leave it's
+%% state on the stack and compute reverse(T) (to be able to backtrack
+%% to that place later and return result of applying ++ function)
+%%
+%% If last call was to reverse (and this would be the only call to
+%% reverse within reverse) then Erlang would not need stack (there is
+%% no computation left that you have to come back later to).
+%%
+%% If you write tail-recursive function (function that calls itself as
+%% last operation) then Erlang will optimize it and will not use stack!
+%%
+%% How to change our reverse function? You could add another
+%% parameter, which would be the reversed part of the list.
+reverse2([], Reversed) ->
+    Reversed;
+reverse2([H|T], Reversed) ->
+    reverse2(T, [H|Reversed]). % here reverse2 is last call (tail recursive call)
+
+%% it is a bit unfortunate that reverse2/2 has two arguments (users of
+%% our library don't want to know internals of reverse2 function)
+%%
+%% let's write reverse2/1 which will be exported that uses reverse2/2
+%% to do the hard job
+reverse2(L) ->
+    reverse2(L, []).
+
+%% now try
+%% sequential:reverse2(lists:seq(1,10000))
+%% sequential:reverse2(lists:seq(1,100000))
+%% or even
+%% sequential:reverse2(lists:seq(1,1000000))
+%% sequential:reverse2(lists:seq(1,10000000))
+
+%% This is very common pattern in functional programming. Try to
+%% convert fib to tail recursive version (you will need at least two
+%% additional arugments)
