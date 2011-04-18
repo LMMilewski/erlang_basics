@@ -1,5 +1,5 @@
 -module(sequential).
--export([data_types/0, pattern_matching/0]).
+-export([data_types/0, pattern_matching/0, all_fibs/1, all_squared/1]).
 
 %% All basic stuff is explained here
 %%  http://www.erlang.org/doc/reference_manual/users_guide.html
@@ -216,7 +216,7 @@ fib(N) -> % here we use unbound variable N. If previous clauses failed to match.
 
 %% as you can see fib(0) and fib(1) are exactly the same. You can
 %% write this code using guards.
-fib2(N) when N < 2 -> % this will be used only when N < 2. This is a guard. 
+fib2(N) when N < 2 -> % this will be used only when N < 2. This is a guard.
     1;
 fib2(N) ->
     fib(N-1) + fib(N-2).
@@ -231,3 +231,17 @@ fib2(N) ->
 %% In Functions (BIFs for short). For list of BIFs consult
 %% http://www.erlang.org/doc/man/erlang.html
 
+%% erlang is functional programming language, so functions are first
+%% class data.  You can store functions in variables, pass functions
+%% as arguments to other functions and return functions as a result of
+%% function call
+all_fibs(N) ->
+    lists:map(fun fib/1, lists:seq(1,N)). % create new list with all elements E in [1..N] replaced with fib(E)
+                                          % all(5) returns [1,2,3,5,8]
+
+%% you can create functions ad hoc (lambda functions)
+all_squared(N) ->
+    Fun = fun (A) ->   % create function that squares its argument and store the function in Fun variable
+                  A*A
+          end,
+    lists:map(Fun, lists:seq(1,N)). % apply Fun to every element in [1..N]
