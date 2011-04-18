@@ -73,7 +73,7 @@
    - catch (use try...catch if you have to)
    - process dictionary (put, get)
    - process_info
-** Event manager
+** Event handlers (own_event_handler.erl)
 ** Testing
    - unit testing
    - property based testing
@@ -164,4 +164,4 @@
    - Document all the errors (and warnings)
    - Don't comment out old code - remove it
    - more at http://www.erlang.se/doc/programming_rules.shtml
-* Logging (logging.erl0
+* Logging (logging.erl)
