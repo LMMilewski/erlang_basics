@@ -54,10 +54,8 @@
    - example: Mnesia "Reference Manual" vs "User's Guide"
 ** Sequential Erlang *sequential.erl*
    - data types
-   - pattern matching
+   - pattern matching, guards, BIFs
    - functions, funs
-   - guards, BIFs
-   - missing clause
    - recursion, tail recursion
    - foldl, foldr, map
    - conditionals
@@ -70,7 +68,7 @@
 ** Testing
    - unit testing
    - property based testing
-   - what happens if the process is crashed?
+   - what happens if the process crashes?
 ** Basic libraries
 *** kernel
    - sasl (error_logger)
@@ -80,45 +78,20 @@
    - file
    - seq_trace
 *** stdlib
-   - ets
-   - io:format
    - lists
-   - proplists
+   - ets
    - random
+   - timer
+   - proplists
    - sets
    - string
-   - timer
+   - sys
    - others
-     + array
-     + base64
-     + binary (for binary data)
-     + calendar
-     + filelib
-     + filename
-     + io
-     + math
-     + queue
-     + re (regexp is obsolete!)
-     + qlc
-     + sofs (sets of sets)
-     + ...
-*** monitoring
-    - cpu_sup
-    - diskup
-    - memsup
-    - ...
+     + array, base64, binary (for binary data), calendar, filelib,
+       filename, io, math, queue, re (regexp is obsolete!), qlc, sofs
+       (sets of sets), ...
 *** interface
-    - crypto
-    - inets
-    - ftp
-    - tfpt
-    - http
-    - jinterface
-    - xmerl (xml)
-    - ssh
-    - ssl
-    - wxErlang
-    - ...
+    crypto, inets, ftp, tfpt, http, jinterface, xmerl (xml), ssh, ssl, wxErlang, ...
 ** The shell and tools
    - rebar
    - erlang-mode

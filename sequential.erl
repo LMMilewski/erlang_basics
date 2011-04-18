@@ -1,5 +1,5 @@
 -module(sequential).
--export([data_types/0]).
+-export([data_types/0, pattern_matching/0]).
 
 %% All basic stuff is explained here
 %%  http://www.erlang.org/doc/reference_manual/users_guide.html
@@ -160,4 +160,41 @@ data_types() ->
 
 
 
-%%% pattern matching and guards
+%%% pattern matching
+pattern_matching() ->
+    %% = is pattern matching operator (NOT assignment operator like in
+    %% C). Both sides of = must be erlang terms. For example
+    1 = 1,
+    {tuple, "string", [list, with, atoms]} = {tuple, "string", [list, with, atoms]},
+    %% as long as left side is the same as right side (after replacing
+    %% variables with its values), everything is ok. If sides are not
+    %% identical, you get matching error.
+    %%
+    %% You can use variables. You can use any variable on left side,
+    %% but only variable with value on right side (bound variables).
+    %%
+    %% If you use unbound variable (variable without value) on left
+    %% side it will be bound to part of right side that matches
+    X = 1, % this is ok, now X is 1
+    %% X = 2, % this will fail now as left hand side is not the same as right hand side
+    Y = {tuple, "string", [list, with, atoms]}, % this is also ok
+    %% 1 = UnboundVariable % this will fail with "variable 'UnboundVariable' is unbound" error
+    %%
+    %% The real power of this feature comes with more complex expressions on left hand side
+    {tuple, String, [ListFirst, with, ListThird]} = Y,
+    %% String, ListFirst, ListThird are unbound variables. In this expressions they will match
+    %% String = "string"
+    %% ListFirst = list
+    %% ListThird = atoms
+    %%
+    %% you can use bound variables on left hand side. If they match to
+    %% right hand side counterpart then everything is ok
+    {tuple, String, [ListFirst, ListSecond, ListThird]} = Y,
+    %% now ListSecond = with
+
+    %% this works with every Erlang data type (i.e. with records).
+    %% Pattern matching is so usefull that you will see it all the
+    %% time in Erlang code.
+    ok.
+
+
