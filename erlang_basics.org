@@ -94,9 +94,6 @@
     crypto, inets, ftp, tfpt, http, jinterface, xmerl (xml), ssh, ssl, wxErlang, ...
 ** The shell and tools
    - rebar
-   - erlang-mode
-   - distel
-   - erlide
    - erl
    - debugger
    - process manager
