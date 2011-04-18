@@ -52,14 +52,8 @@
    - http://www.erlang.org/doc/
    - Applications
    - example: Mnesia "Reference Manual" vs "User's Guide"
-** Sequential Erlang
-   - numbers
-   - atoms
-   - variables (single assignment)
-   - strings (lists, binaries)
-   - lists
-   - tuples
-   - records (relationship with tuples, shell)
+** Sequential Erlang *sequential.erl*
+   - data types
    - macros
    - pattern matching
    - list comprehensions
