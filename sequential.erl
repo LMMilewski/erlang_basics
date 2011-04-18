@@ -198,3 +198,36 @@ pattern_matching() ->
     ok.
 
 
+%%% functions, funs, guards, BIFs
+
+%% we defined two functions (data_types/0 and pattern_matching/0). To
+%% define a function you write its name (atom), list of arguments in ()
+%% separated with comman, arrow (->) and instructions that should be
+%% exected.
+%%
+%% You can use pattern matching in function arguments part
+fib(0) -> % if the argument is 0 then executed this version of function (clause)
+    1; % value of last expressions is returned value (here it is 1). ';' separates clauses
+fib(1) -> % if the argument is 1 then try this one
+    1;
+fib(N) -> % here we use unbound variable N. If previous clauses failed to match. This one is used. Argument is bound to N
+    fib(N-1) + fib(N-2). % call fib functions twice (with different arguments) and return sum of their result
+                         % . ends function definition (use it only in the last clause)
+
+%% as you can see fib(0) and fib(1) are exactly the same. You can
+%% write this code using guards.
+fib2(N) when N < 2 -> % this will be used only when N < 2. This is a guard. 
+    1;
+fib2(N) ->
+    fib(N-1) + fib(N-2).
+%% you can use conjunction of conditions in guard separating them with comma
+%% you can use disjunction of contiguously in that separating them with semicolon
+
+%% fib and fib2 are in fact fib/1, fib2/1 (the number after slash is
+%% the number of arguments). fib/1 and fib/2 would be two totally
+%% different functions (this is *not* overloading as in C)
+
+%% In guards you can't use your own functions. You can use only Build
+%% In Functions (BIFs for short). For list of BIFs consult
+%% http://www.erlang.org/doc/man/erlang.html
+

@@ -54,8 +54,8 @@
    - example: Mnesia "Reference Manual" vs "User's Guide"
 ** Sequential Erlang *sequential.erl*
    - data types
-   - pattern matching, guards, BIFs
-   - functions, funs
+   - pattern matching
+   - functions, funs, guards, BIFs
    - recursion, tail recursion
    - foldl, foldr, map
    - conditionals
