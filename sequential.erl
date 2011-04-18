@@ -93,6 +93,14 @@ data_types() ->
     List4 = List2 ++ [5,6,7,8], % == [1,2,3,4,5,6,7,8]
     io:format("~p~n~p~n~p~n~p~n", [List1, List2, List3, List4]),
 
+    %% list comprehensions
+    Numbers = lists:seq(1,10), % [1,2,3,4,5,6,7,8,9,10]
+    NumbersSquared = [ N * N || N <- Numbers ], % create lists of N^2 for each N in Numbers list
+    NumbersSquaredEven = [ N || N <- NumbersSquared, N rem 2 == 0 ], % take all even N from NumbersSquared list
+    SmallPythagorean = [ {A,B,C} || A <- Numbers, B <- Numbers, C <-Numbers,
+                                    A*A + B*B == C*C, A < B, B < C ], % guess what is computed here
+    io:format("~p~n~p~n", [NumbersSquaredEven, SmallPythagorean]),
+
     %% strings
     %%
     %% Strings are lists of integers. If the all integers in the list
@@ -149,3 +157,7 @@ data_types() ->
     io:format("~p ~p~n", [PersonRecord, PersonRecordOlder]),
 
     ok.
+
+
+
+%%% pattern matching and guards

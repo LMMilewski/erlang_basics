@@ -54,15 +54,14 @@
    - example: Mnesia "Reference Manual" vs "User's Guide"
 ** Sequential Erlang *sequential.erl*
    - data types
-   - macros
    - pattern matching
-   - list comprehensions
    - functions, funs
    - guards, BIFs
    - missing clause
    - recursion, tail recursion
    - foldl, foldr, map
    - conditionals
+   - macros
 *** don't use
    - catch (use try...catch if you have to)
    - process dictionary (put, get)
