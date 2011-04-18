@@ -55,11 +55,11 @@
 ** Sequential Erlang *sequential.erl*
    - data types
    - pattern matching
-   - functions, funs, guards, BIFs
+   - functions, funs, guards, BIFs, lists:map
    - recursion, tail recursion
-   - foldl, foldr, map
    - conditionals
    - macros
+   - lists:foldl, lists:foldr
 *** don't use
    - catch (use try...catch if you have to)
    - process dictionary (put, get)

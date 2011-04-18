@@ -1,5 +1,12 @@
 -module(sequential).
--export([data_types/0, pattern_matching/0, all_fibs/1, all_squared/1, quicksort/1, reverse/1, reverse2/1]).
+-export([data_types/0,
+         pattern_matching/0,
+         all_fibs/1,
+         all_squared/1,
+         quicksort/1,
+         reverse/1,
+         reverse2/1,
+         conditionals/1]).
 
 %% All basic stuff is explained here
 %%  http://www.erlang.org/doc/reference_manual/users_guide.html
@@ -311,3 +318,37 @@ reverse2(L) ->
 %% This is very common pattern in functional programming. Try to
 %% convert fib to tail recursive version (you will need at least two
 %% additional arugments)
+
+
+%%% conditionals
+
+%% You could live without 'if' statement - you could use pattern
+%% matching in function clauses for everything. That would be a bit
+%% awkward as for every branch you would have to code a function.
+%%
+%% In Erlang you have 'if' and 'case' statements to control flow
+conditionals(N) ->
+    %% with 'case' you use pattern matching + guards and with 'if' you
+    %% use guards
+
+    %% case example
+    case fib(N) of
+        1 -> % this is pattern matching
+            io:format("small fib~n");
+        F when F > 100000 -> % with guards
+            io:format("huge fib~n");
+        _Else -> % match everything
+            io:format("normal fib~n")
+    end,
+
+    %% if example
+    Fib = fib(N),
+    if
+        Fib == 1 -> % predicate (guard) before arrow (->)
+            io:format("small fib~n");
+        Fib > 10000 ->
+            io:format("huge fib~n");
+        true ->
+            io:format("normal fib~n")
+    end.
+
