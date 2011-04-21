@@ -7,7 +7,10 @@
          reverse/1,
          reverse2/1,
          conditionals/1,
-         macros/0]).
+         macros/0,
+         map_and_foreach/0,
+         foldl_ex/0,
+         foldr_ex/0]).
 
 %% All basic stuff is explained here
 %%  http://www.erlang.org/doc/reference_manual/users_guide.html
@@ -363,3 +366,62 @@ macros() ->
     io:format("zero = ~p server = ~s~n", [Zero, ?SERVER]),
     ?DPRINT(io:format("hello")),
     ok.
+
+%%% lists:map, lists:foreach, lists:foldl, lists:foldr
+%%
+%% There are few patterns for processing data. One of them is
+%% 'map'. In this pattern one applies the same function f to every
+%% element. Starting with a list [1,2,3,4,5] you end with a list
+%% [f(1), f(2), f(3), f(3), f(5)].
+%%
+%% For example you can compute squares of all integers that way or you
+%% can update position of all opponents in your game.
+%%
+%% Sometimes (not very often I hope ;-)) you do the iteration only for
+%% side effects. For example printing all the elements. You can use
+%% lists:foreach then
+map_and_foreach() ->
+    Squares = lists:map(fun(X) -> X*X end, lists:seq(1,100)),
+    lists:foreach(fun(X) -> io:format("~p~n", [X]) end, Squares),
+    %% you could that with list comprehensions
+    [ io:format("~p~n", [X*X]) || X <- lists:seq(1,100) ],
+    ok.
+
+%% Another pattern is when you apply a function for each element and
+%% at the end group or collect all the results. For example you could
+%% filter females and compute their total age. Simplier case is when
+%% you add few integers or create a list of filenames in the
+%% directory.
+%%
+%% Adding 1+2+3+4+5+6 could be written as (((((1+2)+3)+4)+5+6). You
+%% start with accumulator = 1 and add 2 to it. Then you have
+%% accumulator = 3 and smaller input - you can recursively compute
+%% rest of the sum now adding 3 to accumulator then 4, 5 and 6.
+foldl_ex() ->
+    55 = lists:foldl(fun(X,A) -> A+X end, 0, lists:seq(1,10)),
+    %% you could simply compute sum of squares
+    385 = lists:foldl(fun(X,A) -> A + X*X end, 0, lists:seq(1,10)),
+    ok.
+
+%% IN above example we computed ((((1+2)+3)+4+5)+6) which is the same
+%% as (1+(2+(3+(4+(5+6))))). We computed it left-to-right as the
+%% direction does not matter. But sometimes it does. For eample
+%% (1-(2-(3-(4-(5-6))))) != ((((1-2)-3)-4-5)-6) and we are forced to
+%% use reduce the expression right-to-left. It is possible with
+%% lists:foldr.
+%%
+%% With foldr you set accumulator to 6, compute 5-Accumulator and set
+%% it as new accumulator. Then you compute 4-Accumulator and so on.
+foldr_ex() ->
+    55 = lists:foldr(fun(X,A) -> X+A end, 0, lists:seq(1,10)), % same as foldl
+    -5 = lists:foldr(fun(X,A) -> X-A end, 0, lists:seq(1,10)), % can't do with foldl
+    ok.
+
+%% as a rule of thumb you should use lists:foldl because it is tail
+%% recursive while lists:foldr is not (first it iterates over the list
+%% storing every element on the stack and then starts computation)
+
+%% lists:map, lists:foreach, lists:foldl and lists:foldr should be
+%% used where you would normally use loop. There is no point in
+%% implementing the recursion yourself if you can use building block
+%% prepared by someone else.
