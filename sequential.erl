@@ -6,7 +6,8 @@
          quicksort/1,
          reverse/1,
          reverse2/1,
-         conditionals/1]).
+         conditionals/1,
+         macros/0]).
 
 %% All basic stuff is explained here
 %%  http://www.erlang.org/doc/reference_manual/users_guide.html
@@ -352,3 +353,13 @@ conditionals(N) ->
             io:format("normal fib~n")
     end.
 
+%%% macros
+-define(ZERO,  0).
+-define(SERVER, ?MODULE).
+-define(DPRINT(X), io:format("module: ~p line: ~p expression: ~s value: ~w~n", [?MODULE, ?LINE, ??X, X])).
+
+macros() ->
+    Zero = ?ZERO,
+    io:format("zero = ~p server = ~s~n", [Zero, ?SERVER]),
+    ?DPRINT(io:format("hello")),
+    ok.
