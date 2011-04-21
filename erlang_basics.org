@@ -59,19 +59,14 @@
    - recursion, tail recursion
    - conditionals
    - macros
-   - lists:foldl, lists:foldr
+   - list:map, lists:foreach, lists:foldl, lists:foldr
 *** don't use
    - catch (use try...catch if you have to)
    - process dictionary (put, get)
    - process_info
-** Event handlers (own_event_handler.erl)
-** Testing
-   - unit testing
-   - property based testing
-   - what happens if the process crashes?
 ** Basic libraries
 *** kernel
-   - sasl (error_logger)
+   - sasl (*logging.erl*)
    - code
    - application
    - auth
@@ -92,6 +87,11 @@
        (sets of sets), ...
 *** interface
     crypto, inets, ftp, tfpt, http, jinterface, xmerl (xml), ssh, ssl, wxErlang, ...
+** Event handlers (own_event_handler.erl)
+** Testing
+   - unit testing
+   - property based testing
+   - what happens if the process crashes?
 ** The shell and tools
    - rebar
    - erl
@@ -107,6 +107,7 @@
    - toolbar
    - edoc
 ** The rules
+   - use STDLIB if you can (i.e. lists module)
    - isolate "tricky" or "dirty" code into separate modules
    - don't make assumptions about what the caller will do with the
      results of the function (i.e. bad args!)
@@ -127,4 +128,3 @@
    - Document all the errors (and warnings)
    - Don't comment out old code - remove it
    - more at http://www.erlang.se/doc/programming_rules.shtml
-* Logging (logging.erl)
