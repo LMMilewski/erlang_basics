@@ -70,9 +70,9 @@
    - sasl (*logging.erl*)
    - code (*mycode.erl*, *remotecodeload.erl*)
    - auth (*myauth.erl*)
-   - rpc
+   - rpc (*myrpc.erl*)
 *** stdlib
-   - lists
+   - lists (*http://www.erlang.org/doc/man/lists.html*)
    - ets
    - random
    - timer
