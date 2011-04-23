@@ -1,3 +1,4 @@
+
 # -*- org -*-
 
 * Plan
@@ -67,11 +68,12 @@
 ** Basic libraries
 *** kernel
    - sasl (*logging.erl*)
-   - code
+   - code (*mycode.erl*, *remotecodeload.erl*)
    - application
    - auth
    - file
    - seq_trace
+   - rpc
 *** stdlib
    - lists
    - ets
