@@ -1,4 +1,3 @@
-
 # -*- org -*-
 
 * Plan
@@ -73,11 +72,10 @@
    - rpc (*myrpc.erl*)
 *** stdlib
    - lists (*http://www.erlang.org/doc/man/lists.html*)
-   - ets
-   - random
-   - timer
+   - dict (*http://www.erlang.org/doc/man/dict.html*)
+   - sets (*http://www.erlang.org/doc/man/sets.html*)
+   - random (*http://www.erlang.org/doc/man/random.html*)
    - proplists
-   - sets
    - string
    - sys
    - others
