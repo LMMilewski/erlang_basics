@@ -70,7 +70,6 @@
    - sasl (*logging.erl*)
    - code (*mycode.erl*, *remotecodeload.erl*)
    - auth (*myauth.erl*)
-   - file
    - seq_trace
    - rpc
 *** stdlib
