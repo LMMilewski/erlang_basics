@@ -75,13 +75,11 @@
    - dict (*http://www.erlang.org/doc/man/dict.html*)
    - sets (*http://www.erlang.org/doc/man/sets.html*)
    - random (*http://www.erlang.org/doc/man/random.html*)
-   - proplists
-   - string
-   - sys
+   - proplists (*http://www.erlang.org/doc/man/proplists.html*)
+   - string (reprezentacja, *http://www.erlang.org/doc/man/string.html*)
    - others
      + array, base64, binary (for binary data), calendar, filelib,
-       filename, io, math, queue, re (regexp is obsolete!), qlc, sofs
-       (sets of sets), ...
+       filename, io, math, queue, re (regexp is obsolete!), qlc, sofs, ...
 *** interface
     crypto, inets, ftp, tfpt, http, jinterface, xmerl (xml), ssh, ssl, wxErlang, ...
 ** Event handlers (own_event_handler.erl)
@@ -104,6 +102,7 @@
    - etop
    - toolbar
    - edoc
+   - sys 
 ** The rules
    - use STDLIB if you can (i.e. lists module)
    - isolate "tricky" or "dirty" code into separate modules
