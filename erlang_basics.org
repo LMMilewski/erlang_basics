@@ -70,7 +70,6 @@
    - sasl (*logging.erl*)
    - code (*mycode.erl*, *remotecodeload.erl*)
    - auth (*myauth.erl*)
-   - seq_trace
    - rpc
 *** stdlib
    - lists
@@ -98,6 +97,7 @@
    - debugger
    - process manager
    - c (command interface)
+   - seq_trace
    - dbg
    - table visualizer
    - dialyzer
