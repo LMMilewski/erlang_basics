@@ -69,7 +69,6 @@
 *** kernel
    - sasl (*logging.erl*)
    - code (*mycode.erl*, *remotecodeload.erl*)
-   - application
    - auth
    - file
    - seq_trace
