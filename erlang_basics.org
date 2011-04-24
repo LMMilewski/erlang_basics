@@ -83,15 +83,21 @@
 *** interface
     crypto, inets, ftp, tfpt, http, jinterface, xmerl (xml), ssh, ssl, wxErlang, ...
 ** Event handlers (own_event_handler.erl)
-** Testing
+** Testing and types specyfications
    - unit testing
    - property based testing
    - what happens if the process crashes?
+   - spec
 ** The shell and tools
-   - erl options (*erl.erl*)
-   - useful shell commands (*shell_cmds.erl*)
-   - c (command interface)
+   - shell (*erl.erl*, *shell_cmds.erl*)
    - dialyzer
+      + erlc +debug_info
+      + dialyzer --build_plt --apps erts kernel stdlib mnesia
+      + dialyzer -Wrace_conditions -Wbehaviours -r dialyzertest/
+      + --build_plt, --add_to_plt, --remove_from_plt
+      + --dump_call_graph
+      + --wx % older version is --gui
+      + -pa dir % use when you use -include_lib
    - debugger
    - process manager
    - rebar
