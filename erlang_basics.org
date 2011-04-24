@@ -107,7 +107,6 @@
       + etop:start()
    - toolbar
       + toolbar:start()
-   - rebar
    - edoc
    - eunit
    - quickcheck
@@ -116,6 +115,9 @@
    - dbg
    - seq_trace
    - sys
+   - rebar
+      + git clone git://github.com/basho/rebar.git
+      + git tag RELEASE-1
 ** The rules
    - use STDLIB if you can (i.e. lists module)
    - isolate "tricky" or "dirty" code into separate modules
@@ -137,4 +139,6 @@
    - Don't put your name in the code
    - Document all the errors (and warnings)
    - Don't comment out old code - remove it
+   - Don't introduce trailing whitespaces!
+   - Commit logical changes and whitespace changes separately
    - more at http://www.erlang.se/doc/programming_rules.shtml
