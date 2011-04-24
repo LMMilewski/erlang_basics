@@ -105,12 +105,13 @@
       + CRUD
    - process manager
       + pman:start()
+   - application monitor
+      + appmon:start()
    - debugger
    - dbg
    - rebar
    - seq_trace
    - typer
-   - app monitor
    - etop
    - toolbar
    - edoc
