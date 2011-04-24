@@ -88,15 +88,16 @@
    - property based testing
    - what happens if the process crashes?
 ** The shell and tools
-   - erl (*erl.erl*)
-   - rebar
+   - erl options (*erl.erl*)
+   - useful shell commands (*shell_cmds.erl*)
+   - c (command interface)
+   - dialyzer
    - debugger
    - process manager
-   - c (command interface)
+   - rebar
    - seq_trace
    - dbg
    - table visualizer
-   - dialyzer
    - typer
    - app monitor
    - etop
