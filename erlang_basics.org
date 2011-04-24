@@ -107,12 +107,12 @@
       + pman:start()
    - application monitor
       + appmon:start()
-   - debugger
-   - dbg
-   - rebar
-   - seq_trace
-   - typer
    - etop
+      + etop:start()
+   - debugger
+   - rebar
+   - dbg
+   - seq_trace
    - toolbar
    - edoc
    - sys
