@@ -83,7 +83,7 @@
 *** interface
     crypto, inets, ftp, tfpt, http, jinterface, xmerl (xml), ssh, ssl, wxErlang, ...
 ** Event handlers (own_event_handler.erl)
-** Testing and types specyfications
+** Tests, types, documentation
    - unit testing
    - property based testing
    - what happens if the process crashes?
@@ -109,14 +109,13 @@
       + appmon:start()
    - etop
       + etop:start()
+   - toolbar
+      + toolbar:start()
    - debugger
    - rebar
    - dbg
    - seq_trace
-   - toolbar
-   - edoc
    - sys
-   - instrument
 ** The rules
    - use STDLIB if you can (i.e. lists module)
    - isolate "tricky" or "dirty" code into separate modules
