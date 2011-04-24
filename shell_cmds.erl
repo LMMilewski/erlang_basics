@@ -17,11 +17,25 @@
 %%  > -record(person, {name,age}). % undefined shell command record
 %%  > rd(person, {name, age}). % this is ok
 %%
+%% Getting stuck in shell
+%%  > receive X -> X end. % after this command the shell is block
+%% type ^G
+%% --> s
+%% --> j
+%%  you get list of all jobs
+%% --> c N % N - id of new shell job (i.e. 2)
+%% if you want to kill previous shell
+%% type ^G
+%% --> j
+%% --> k N % N - id of the job you want to kill
 
 %%% Most common shell cmds
 %% f() - forget all bindings (very common)
 %% c(Module) - compile and load module
 %% q() - quit
+
+%%% ^G commands (type ctrl+g to run 'user switch commnad')
+%% h - print all available commands
 
 %%% Other very common shell cmds
 %% help() -- print all available cmds
