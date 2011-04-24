@@ -84,10 +84,6 @@
     crypto, inets, ftp, tfpt, http, jinterface, xmerl (xml), ssh, ssl, wxErlang, ...
 ** Event handlers (own_event_handler.erl)
 ** Tests, types, documentation
-   - unit testing
-   - property based testing
-   - what happens if the process crashes?
-   - spec
 ** The shell and tools
    - shell (*erl.erl*, *shell_cmds.erl*)
    - dialyzer
@@ -111,8 +107,12 @@
       + etop:start()
    - toolbar
       + toolbar:start()
-   - debugger
    - rebar
+   - edoc
+   - eunit
+   - quickcheck
+   - -spec
+   - debugger
    - dbg
    - seq_trace
    - sys
