@@ -98,12 +98,17 @@
       + --dump_call_graph
       + --wx % older version is --gui
       + -pa dir % use when you use -include_lib
-   - debugger
+   - table visualizer
+      + mnesia tables
+      + ets tables (public,private,protected)
+      + tv:start()
+      + CRUD
    - process manager
+      + pman:start()
+   - debugger
+   - dbg
    - rebar
    - seq_trace
-   - dbg
-   - table visualizer
    - typer
    - app monitor
    - etop
