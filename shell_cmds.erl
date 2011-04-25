@@ -36,6 +36,9 @@
 %%
 %% This (both ways) kills the shell (it is obviously restarted). 
 %% You lose your ETS tables + all linked processes are killed
+%% If you can't affort loosing these you can switch (^G s c) 
+%% to another shell and repair the situation (i.e. send a message
+%% to process stuck in receive expression).
 
 
 %%% Most common shell cmds
