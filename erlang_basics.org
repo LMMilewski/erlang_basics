@@ -107,6 +107,7 @@
       + typer
    - testing
       + eunit (*fib_tests.erl*)
+      + http://erlcode.wordpress.com/2010/08/30/erlang-eunit-introduction/
       + quickcheck
    - problem solving
       + erlang:display(Term)
