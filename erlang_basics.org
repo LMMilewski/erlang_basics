@@ -103,13 +103,27 @@
       + toolbar:start()
    - basic profiling
       + timer:tc(M,F,A).
-   - edoc
-   - eunit
-   - quickcheck
-   - -spec
-   - debugger
-   - dbg
-   - seq_trace
+   - documenting
+      + edoc
+      + -spec
+   - testing
+      + eunit
+      + quickcheck
+   - problem solving
+      + erlang:display(Term)
+      + BIFs:
+	- processes
+	- erlang:ports
+	- registerd
+	- statistics
+	- process_info
+        - port_info
+        - erlang:info
+        - erlang:db_all_tables
+	- erlang:db_info
+      + debugger
+      + dbg
+      + seq_trace
    - sys
    - rebar
       + git clone git://github.com/basho/rebar.git
@@ -120,7 +134,7 @@
      + incorrect MFA in erl -s command
      + not enough memory
      + limit of file descriptors number
-     + SIGUSR1
+     + SIGUSR1 (core dump + crash dump)
 ** The rules
    - use STDLIB if you can (i.e. lists module)
    - isolate "tricky" or "dirty" code into separate modules
