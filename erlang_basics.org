@@ -2,13 +2,11 @@
 
 * Plan
 ** Intro
-*** Scope
-   Due to time limits
 *** we will discuss:
 **** basic sequential Erlang features
 **** most useful basic modules
 **** basic tools used to develop with Erlang
-**** basics of gen_event behavior
+**** basics of gen_event behaviour
 **** documentation navigation
 *** we won't discuss:
 **** distributed stuff
@@ -39,15 +37,10 @@
 **** http://www.tryerlang.org/
 *** Books
    - Making reliable distributed system in the presence of software errors
-     http://www.erlang.org/download/armstrong_thesis_2003.pdf
    - Erlang Programming
-     http://liancheng.info/bib/Cesarini2009.pdf
    - Programming Erlang
-     http://media.pragprog.com/titles/jaerlang/Concurrent.pdf
    - Erlang and OTP in Action
-     http://www.csc.lsu.edu/~kundu/distComp/Erlang-OTP-action-book.pdf
    - Concurrent programming in erlang
-     http://www.erlang.org/download/erlang-book-part1.pdf
 *** Navigating in Erlang documentation
    - http://www.erlang.org/doc/
    - Applications
