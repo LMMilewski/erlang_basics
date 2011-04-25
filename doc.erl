@@ -27,3 +27,8 @@ sum(A, B) ->
 %%% Type specyfications
 %% for list of possible types see
 %% http://www.erlang.org/doc/reference_manual/typespec.html
+
+
+%%% TypEr
+%% you can use typer
+%%  $ typer filename.erl
