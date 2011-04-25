@@ -106,7 +106,7 @@
    - documenting (*doc.erl*)
       + typer
    - testing
-      + eunit
+      + eunit (*fib_tests.erl*)
       + quickcheck
    - problem solving
       + erlang:display(Term)
