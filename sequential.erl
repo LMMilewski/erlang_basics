@@ -170,6 +170,23 @@ data_types() ->
     ok.
 
 
+%%% Operations on basic types
+%% atom -> is_atom/1
+%% integer -> is_integer/1, - (unary, binary), +, /, *, rem, div, base#num
+%% float -> is_float/1, -, +, /, *
+%% integer/binaries -> band, bor, bxor, bnot, bsl, bsr
+%% built-in number operations -> abs/1, min/2, max/2, is_number/1
+%% boolean -> is_boolean/1, and (eager), andalso (lazy), or (eager), orelse (lazy), xor, not, true, false
+%% tuple -> is_tuple/1, make_tuple/3, make_tuple/2, tuple_size/1, setelement/3, getelement/2, append_element/2
+%% list -> ++, --, |, [], hd/1, tl/1, length/1, is_list/1
+%% chars -> is_integer/1
+%% binaries -> is_binary/1, split_binary/2, list_to_binary/1, size/1
+%% expressions -> ==, /=, =:=, =/=, =<, <, >=, >
+%% conversions -> list_to_float/1, list_to_integer/1, float_to_list/1, integer_to_list/1, trunc/1, round/1, float/1, 
+%%                atom_to_list/1, list_to_atom/1, list_to_existing_atom/1, tuple_to_list/1, list_to_tuple/1
+%%                term_to_binary/1, binary_to_term/1, binary_to_list/1,  list_to_binary
+
+
 
 %%% pattern matching
 pattern_matching() ->

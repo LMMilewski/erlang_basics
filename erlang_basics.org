@@ -103,9 +103,8 @@
       + toolbar:start()
    - basic profiling
       + timer:tc(M,F,A).
-   - documenting
-      + edoc
-      + -spec
+   - documenting (*doc.erl*)
+      + typer
    - testing
       + eunit
       + quickcheck
