@@ -124,7 +124,7 @@
       + debugger
       + dbg
       + seq_trace
-   - sys
+      + sys
    - rebar
       + git clone git://github.com/basho/rebar.git
       + git tag RELEASE-1
