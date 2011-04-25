@@ -28,6 +28,15 @@
 %% type ^G
 %% --> j
 %% --> k N % N - id of the job you want to kill
+%% 
+%% Easier way:
+%% type ^G
+%% --> i
+%% --> c
+%%
+%% This (both ways) kills the shell (it is obviously restarted). 
+%% You lose your ETS tables + all linked processes are killed
+
 
 %%% Most common shell cmds
 %% f() - forget all bindings (very common)
