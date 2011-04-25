@@ -1,6 +1,6 @@
 # -*- org -*-
 
-* Plan
+* Table of contents
 ** Intro
 *** we will discuss:
 **** basic sequential Erlang features
@@ -35,6 +35,7 @@
 **** http://www.erlang.se/doc/programming_rules.shtml
 **** http://learnyousomeerlang.com/contents
 **** http://www.tryerlang.org/
+**** http://www.erlang.org/doc/getting_started/users_guide.html
 *** Books
    - Making reliable distributed system in the presence of software errors
    - Erlang Programming
@@ -100,6 +101,8 @@
       + etop:start()
    - toolbar
       + toolbar:start()
+   - basic profiling
+      + timer:tc(M,F,A).
    - edoc
    - eunit
    - quickcheck
@@ -111,6 +114,13 @@
    - rebar
       + git clone git://github.com/basho/rebar.git
       + git tag RELEASE-1
+** core dumps
+   - reason
+     + running two nodes with the same name
+     + incorrect MFA in erl -s command
+     + not enough memory
+     + limit of file descriptors number
+     + SIGUSR1
 ** The rules
    - use STDLIB if you can (i.e. lists module)
    - isolate "tricky" or "dirty" code into separate modules
