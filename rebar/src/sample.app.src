@@ -1,0 +1,17 @@
+{application, sample,
+ [
+  {description, ""},
+  {vsn, "1"},
+  {registered, []},
+  {modules, [
+             sample_app,
+             sample_sup,
+             sample_serv
+             ]},
+  {applications, [
+                  kernel,
+                  stdlib
+                 ]},
+  {mod, { sample_app, []}},
+  {env, []}
+ ]}.

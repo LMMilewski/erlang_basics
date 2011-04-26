@@ -127,7 +127,16 @@
       + sys
    - rebar
       + git clone git://github.com/basho/rebar.git
-      + git tag RELEASE-1
+      + cd rebar
+      + ./bootstrap
+      + mkdir -p ~/bin && cp rebar ~/bin
+      + add ~/bin to path in ~/.profile or ~/.bashrc
+      + rebar -c (list available commands)
+      + rebar create-app appid=sample
+      + make
+         - rebar get-deps
+         - rebar compile
+      + http://alancastro.org/2010/05/01/erlang-application-management-with-rebar.html
 ** core dumps
    - reason
      + running two nodes with the same name
