@@ -1,26 +1,13 @@
-.PHONY: deps
-
-all: deps compile
-
-compile:
-	rebar compile
-
-deps:
+all:
 	rebar get-deps
+	rebar compile
 
 clean:
 	rebar clean
-
-distclean: clean
 	rebar delete-deps
 
-eunit:
+test:
 	rebar skip_deps=true eunit
 
-docs: deps
-	rebar skip_deps=true doc
-
 dialyzer: compile
-	@dialyzer -Wno_return -c apps/riak_core/ebin
-
-
+	dialyzer -Wno_return -c ebin
