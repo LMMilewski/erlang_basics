@@ -40,3 +40,25 @@ prop_delete_ok() ->
 delete_ok() ->
     quickcheck(numtests(10000, prop_delete_ok())).
 
+
+%% use collect function to check properties of the problem (for exampe
+%% distribution). Here we check how often X is an element of a given
+%% list
+check_member_probability() ->
+    quickcheck(?FORALL({X,Xs}, {int(), list(int())}, collect(lists:member(X, Xs), true))).
+%% OK, passed 100 tests
+%% 96% false
+%% 4% true
+%% true
+
+%% to make the probability higher lets imply that X is member of Xs
+%% now it will fail almost always with only 100 tries
+prop_delete_fail_fast() ->
+    ?FORALL({X, Xs}, {int(), list(int())},
+            ?IMPLIES(lists:member(X, Xs),
+                     not lists:member(X, lists:delete(X, Xs)))).
+delete_fail_fast() ->
+    quickcheck(prop_delete_fail_fast()).
+
+
+%% for more see eqc/examples/lists_eqc.erl example
