@@ -13,7 +13,7 @@ prop_reverse() ->
     ?FORALL(Xs, list(int()),
             lists:reverse(lists:reverse(Xs)) == Xs).
 basic() ->
-    eqc:quickcheck(prop_reverse()).
+    quickcheck(prop_reverse()).
 
 %% this will fail because lists:delete removes only first occurance of
 %% element
@@ -22,12 +22,12 @@ prop_delete_fail() ->
             not lists:member(X, lists:delete(X, Xs))).
 
 delete_fail() ->
-    eqc:quickcheck(eqc:numtests(10000, prop_delete_fail())).
-%% Note: you can then use eqc:counterexample to get data that recently
+    quickcheck(numtests(10000, prop_delete_fail())).
+%% Note: you can then use counterexample to get data that recently
 %% caused test to fail
-%% type eqc:counterexample() in shell (you can later pass counterexample to eqc:check)
+%% type counterexample() in shell (you can later pass counterexample to check)
 %%
-%% You could also use eqc:backtrace(). This only works if the error
+%% You could also use backtrace(). This only works if the error
 %% was not in another linked module
 
 
@@ -38,5 +38,5 @@ prop_delete_ok() ->
             ?IMPLIES(length(lists:filter(fun(E) -> E == X end, Xs)) < 2,
                      not lists:member(X, lists:delete(X, Xs)))).
 delete_ok() ->
-    eqc:quickcheck(eqc:numtests(10000, prop_delete_ok())).
+    quickcheck(numtests(10000, prop_delete_ok())).
 
