@@ -130,6 +130,8 @@
       + coverage add {cover_enabled, true}. to your rebar.config
         file. You'll get coverage analysis in html (after every tests
         run you get link to that page)
+      + eunit:test(ModuleName) to test module ModuleName. (i.e. eunit:test(fib)).
+      + http://www.erlang.org/doc/man/eunit.html
       + quickcheck
         - Download free version http://www.quviq.com/news100621.html
 ** Troubleshooting
