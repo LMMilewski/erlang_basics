@@ -132,8 +132,19 @@
         run you get link to that page)
       + eunit:test(ModuleName) to test module ModuleName. (i.e. eunit:test(fib)).
       + http://www.erlang.org/doc/man/eunit.html
-      + quickcheck
-        - Download free version http://www.quviq.com/news100621.html
+      + quickcheck (*eqc_simple.erl*)
+        - Great demos
+          + elevators: http://www.quviq.com/demos/QuickCheck%20Elevator%20Demo/QuickCheck%20Elevator%20Demo.htm
+          + sms packing: http://www.quviq.com/demos/QuickCheck%20SMS%20Demo/QuickCheck%20SMS%20Demo.htm
+        - Install
+          + download free version http://www.quviq.com/news100621.html
+          + unzip eqcmini.zip
+          + documentation in eqc-Version/doc
+          + examples in eqc-Version/examples
+          + add it as an application to your release (we don't cover applications in this tutorial)
+        - documentation (*~/erlang_basics/eqc/doc/index.html*)
+          - eqc_gen - functions for generating test cases
+          - eqc - functions for writing and testing properties
 ** Troubleshooting
    - problem solving
       + erlang:display(Term)
