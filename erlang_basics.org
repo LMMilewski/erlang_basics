@@ -127,7 +127,29 @@
    - testing
       + eunit (*fib_tests.erl*)
       + http://erlcode.wordpress.com/2010/08/30/erlang-eunit-introduction/
+      + coverage add {cover_enabled, true}. to your rebar.config
+        file. You'll get coverage analysis in html (after every tests
+        run you get link to that page)
       + quickcheck
+        - Download free version http://www.quviq.com/news100621.html
+** Troubleshooting
+   - problem solving
+      + erlang:display(Term)
+      + BIFs:
+	- processes
+	- erlang:ports
+	- registerd
+	- statistics
+	- process_info
+        - port_info
+        - erlang:info
+        - erlang:db_all_tables
+	- erlang:db_info
+      + debugger
+      + dbg
+      + seq_trace
+      + sys
+** Event handlers (own_event_handler.erl)
 ** The rules
    - use STDLIB if you can (i.e. lists module)
    - isolate "tricky" or "dirty" code into separate modules
@@ -152,21 +174,3 @@
    - Don't introduce trailing whitespaces!
    - Commit logical changes and whitespace changes separately
    - more at http://www.erlang.se/doc/programming_rules.shtml
-** Event handlers (own_event_handler.erl)
-** Troubleshooting
-   - problem solving
-      + erlang:display(Term)
-      + BIFs:
-	- processes
-	- erlang:ports
-	- registerd
-	- statistics
-	- process_info
-        - port_info
-        - erlang:info
-        - erlang:db_all_tables
-	- erlang:db_info
-      + debugger
-      + dbg
-      + seq_trace
-      + sys

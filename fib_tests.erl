@@ -10,6 +10,9 @@
 -module(fib_tests).
 -include_lib("eunit/include/eunit.hrl").
 
+
+%%% Simple testing
+%% http://erlcode.wordpress.com/2010/08/30/erlang-eunit-introduction/
 negative_argument_test() ->
     ?assertException(error, function_clause, fib:compute(-1)),
     ?assertException(error, function_clause, fib:compute(-100)).
@@ -27,3 +30,22 @@ big_argument_test() ->
     ?assertEqual(1134903170, fib:compute(45)),
     ?assertEqual(7778742049, fib:compute(49)).
 
+
+%%% fixtures
+%% you can run setup before each test and finish after it. Very
+%% usefull if you test gen_server etc.
+%%
+%% http://erlcode.wordpress.com/2010/08/30/erlang-eunit-continuation-1-fixtures/
+setup() ->
+    ok.
+finish(_Args) -> % finish gets as an argument what setup returns
+    ok.
+
+negative_argument_test_() ->  % note _ at the end of function name
+    { setup,
+      fun setup/0, % this will be run before the test
+      fun finish/1, % this will be run after the test
+      ?_test(begin % this is _test not test macro
+                ?assertException(error, function_clause, fib:compute(-1)),
+                ?assertException(error, function_clause, fib:compute(-100))
+            end)}.
