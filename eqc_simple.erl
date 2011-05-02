@@ -24,8 +24,18 @@ prop_delete_fail() ->
     ?FORALL({X, Xs}, {int(), list(int())},
             not lists:member(X, lists:delete(X, Xs))).
 
+prop_delete_fail_2() ->
+    ?FORALL(Xs, non_empty(list(int())),
+            ?FORALL(X, elements(Xs),
+                    not lists:member(X, lists:delete(X, Xs)))).
+
 delete_fail() ->
     quickcheck(numtests(10000, prop_delete_fail())).
+
+delete_fail_2() ->
+    quickcheck(prop_delete_fail_2()).
+
+
 %% Note: you can then use counterexample to get data that recently
 %% caused test to fail
 %% type counterexample() in shell (you can later pass counterexample to check)
@@ -47,7 +57,7 @@ prop_delete_ok_2() ->
                             Xs ++ Ys))).
 
 delete_ok() ->
-    quickcheck(numtests(10000, prop_delete_ok())).
+    quickcheck(numtests(10000, prop_delete_ok_2())).
 
 
 %% use collect function to check properties of the problem (for exampe
@@ -83,3 +93,9 @@ prop_fails_delete() ->
 %%% for more see other eqc examples in eqc/example/ diretory
 %% make sure to see eqc/example/lists_eqc.erl
 %% look for prop_seq part
+
+
+%%% Another goot tutorials
+%% http://www.protest-project.eu/upload/tutorials/TestingToolsWs/Software_Testing_with_QuickCheck1of3.pdf
+%% http://www.protest-project.eu/upload/tutorials/TestingToolsWs/Software_Testing_with_QuickCheck2of3.pdf
+%% http://www.protest-project.eu/upload/tutorials/TestingToolsWs/Software_Testing_with_QuickCheck3of3.pdf
