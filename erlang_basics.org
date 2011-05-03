@@ -173,6 +173,10 @@
       - wall_clock --> {Total, SinceLastCall}
     + process_info(Pid), process_info(Pid, Flag)
   - debugger
+    + debugger:start()
+    + module/interpret, choose source file
+    + every NEWLY STARTED interpreted module will be shown in Monitor window
+    + pman is helpful when you need to kill supervised process
   - dbg
   - seq_trace
   - sys
