@@ -151,22 +151,31 @@
           - eqc - functions for writing and testing properties
         - REMEMBER: tests must run FAST or programmers won't use them
 ** Troubleshooting
-   - problem solving
-      + erlang:display(Term)
-      + BIFs:
-	- processes
-	- erlang:ports
-	- registerd
-	- statistics
-	- process_info
-        - port_info
-        - erlang:info
-        - erlang:db_all_tables
-	- erlang:db_info
-      + debugger
-      + dbg
-      + seq_trace
-      + sys
+ - erlang:display(Term)
+ - C-c
+    + (l)oaded !!
+    + (d)istribution
+    + (c)ontinue
+    + (v)ersion
+ - functions
+    + i() - process list
+    + i(X,Y,Z) - process info for pid(X,Y,Z)
+    + ni() - process list on all nodes
+    + m() - module list
+    + bt(Pid) - backtrace
+    + memory() - memory allocation information
+    + regs() / nregs() - registered processes (single node / all nodes)
+    + statistics(Type)
+      - garbage_colletion --> {number of GCs, Words reclaimed, 0}
+      - io --> total number of bytes received/sent through ports
+      - run_queue --> number of processes ready to run
+      - runtime --> {Total, SinceLastCall}
+      - wall_clock --> {Total, SinceLastCall}
+    + process_info(Pid), process_info(Pid, Flag)
+  - debugger
+  - dbg
+  - seq_trace
+  - sys
 ** Event handlers (own_event_handler.erl)
 ** The rules
    - use STDLIB if you can (i.e. lists module)
