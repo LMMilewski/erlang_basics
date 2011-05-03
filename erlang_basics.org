@@ -42,6 +42,8 @@
    - Programming Erlang
    - Erlang and OTP in Action
    - Concurrent programming in erlang
+*** Best source of Erlang examples ever
+    https://github.com/languages/Erlang
 *** Navigating in Erlang documentation
    - http://www.erlang.org/doc/
    - Applications
