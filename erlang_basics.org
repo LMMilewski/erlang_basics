@@ -120,7 +120,7 @@
          - rebar get-deps
          - rebar compile
       + http://alancastro.org/2010/05/01/erlang-application-management-with-rebar.html
-      + rebar (*rebar/rebar.config.sample*)
+      + rebar (*rebar/rebar.config.sample.*)
 ** Tests, types, documentation
    - documenting (*doc.erl*)
       + edoc
@@ -142,10 +142,12 @@
           + unzip eqcmini.zip
           + documentation in eqc-Version/doc
           + examples in eqc-Version/examples
-          + add it as an application to your release (we don't cover applications in this tutorial)
+          + copy eqc-Version to your otp/lib direcotory as eqc
+          + if you get wall of errors - you don't have eqc ebin in your path
         - documentation (*~/erlang_basics/eqc/doc/index.html*)
           - eqc_gen - functions for generating test cases
           - eqc - functions for writing and testing properties
+        - REMEMBER: tests must run FAST or programmers won't use them
 ** Troubleshooting
    - problem solving
       + erlang:display(Term)
