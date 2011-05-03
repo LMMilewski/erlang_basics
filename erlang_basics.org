@@ -175,8 +175,12 @@
   - debugger
     + debugger:start()
     + module/interpret, choose source file
-    + every NEWLY STARTED interpreted module will be shown in Monitor window
+    + every NEWLY STARTED interpreted module will be shown in Monitor window
     + pman is helpful when you need to kill supervised process
+    + you can mark "first call" and "on break"
+    + doubleclick on interpreted module name
+    + break/function or double click on lines where breakpoint should be placed
+  - appmon tracing
   - dbg
   - seq_trace
   - sys
