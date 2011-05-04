@@ -231,7 +231,13 @@ HandlerFun =
         io:format(Fd,"~1000p~n~n",[Trace])
     end.
 ttb:format("ttb_upload-20101113-202517", [{out,"mytrace.log"}, {handler, {HandlerFun, ok}}]).
-  + others: sys, seq_trace, eper, invisio, onvisio
+  + sys
+    + debugging OTP behaviours
+    + http://www.erlang.org/doc/design_principles/spec_proc.html
+  + seq_trace
+    + sequential tracing
+    + http://www.erlang.org/doc/man/seq_trace.html
+  + others: eper, invisio, onvisio
 ** The rules
    - use STDLIB if you can (i.e. lists module)
    - isolate "tricky" or "dirty" code into separate modules
