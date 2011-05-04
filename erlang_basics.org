@@ -218,8 +218,21 @@
         + dbg:fun2ms(fun([A,B]) when A > B -> enable_trace(garbage_collection) end).
         + message(caller())
     + distributed debugging dbg:n(Node), dbg:ln(), dbg:cn(Node) - add, list, clear (remove) Node
-  + seq_trace
+  + ttb (distributed tracing)
+    + ttb:tracer([q@lmm, w@lmm, e@lmm], [{file, "example_trace"}]).
+    + ttb:p(all, c). % same as dbg:p
+    + ttb:tp/tpl/ctp/ctpl % same as dbg:tp/tpl/ct/ctpl
+    + ttb:stop([format]).
+HandlerFun =
+    fun(Fd, Trace, TraceInfo, _) ->
+        io:format(Fd,"= TraceInfo:",[]),
+        io:format(Fd,"~1000p~n",[TraceInfo]),
+        io:format(Fd,"= Trace    :",[]),
+        io:format(Fd,"~1000p~n~n",[Trace])
+    end.
+ttb:format("ttb_upload-20101113-202517", [{out,"mytrace.log"}, {handler, {HandlerFun, ok}}]).
   + sys
+  + seq_trace
   + others: eper, invisio, onvisio
 ** The rules
    - use STDLIB if you can (i.e. lists module)
