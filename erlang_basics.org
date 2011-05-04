@@ -172,7 +172,7 @@
       - runtime --> {Total, SinceLastCall}
       - wall_clock --> {Total, SinceLastCall}
     + process_info(Pid), process_info(Pid, Flag)
-  - debugger
+  + debugger (needs debug_info)
     + debugger:start()
     + module/interpret, choose source file
     + every NEWLY STARTED interpreted module will be shown in Monitor window
@@ -180,11 +180,47 @@
     + you can mark "first call" and "on break"
     + doubleclick on interpreted module name
     + break/function or double click on lines where breakpoint should be placed
-  - appmon tracing
-  - dbg
-  - seq_trace
-  - sys
-** Event handlers (own_event_handler.erl)
+  + appmon tracing (very simple)
+  + pman tracing (very simple yet powerful)
+  + dbg - textbased tracer (almost no overhead - can be used on production system)
+    + http://www.erlang.org/doc/man/dbg.html
+    + http://www.protest-project.eu/upload/tutorials/November2010/DBG_TTB_tutorial_Nov_2010.pdf
+    + for tracing processes (not functions)
+    + can trace send/receive message, function calls, exit, spawn, link/unlink,...
+    + trace emits message that dbg process gets
+    + dbg:tracer()
+    + dbg:p(What, Flags)
+      - What: pid(), all, new, existing, registered name, {X,Y,Z}
+      - Flags:
+        + s - send messages
+        + r - receive messages
+        + m - sending&receiving messages
+        + c - calls to functions
+        + p - process related (spawn, links)
+        + so[f]s - set of [first] spawn. Inherit flags for new processes
+        + so[f]l - set on [first] link. Inherit flags when linking new process
+        + all - set all flags
+        + clear - clear all flags
+        + running - process scheduling
+        + garbage_collection - when GC occurs
+        + timestamp - attach timestamp
+        + arity - show arity instead of argument
+    + dbg:stop_clear(), dbg:p(What, clear).
+    + dbg:p(self(), [garbage_collection]).
+    + dbg:p(self(), [m, timestamp]).
+    + dbg:p(all, [c, timestamp]).
+      - you have to call dbg:tp({M,F,A}, MatchSpec) (tp - trace pattern, tpl - qtrace pattern local)
+      - dbg:tp(io, format, '_', []).
+      - use dbg:fun2ms(F) to generate Match Specyfication
+        + F takes list of parameters
+        + dbg:fun2ms(fun([A,B]) when is_list(A) andalso is_integer(B) -> message(caller) end).
+        + dbg:fun2m(fun([A, A]) -> ok end).
+        + dbg:fun2ms(fun([A,B]) when A > B -> enable_trace(garbage_collection) end).
+        + message(caller())
+    + distributed debugging dbg:n(Node), dbg:ln(), dbg:cn(Node) - add, list, clear (remove) Node
+  + seq_trace
+  + sys
+  + others: eper, invisio, onvisio
 ** The rules
    - use STDLIB if you can (i.e. lists module)
    - isolate "tricky" or "dirty" code into separate modules
@@ -209,3 +245,4 @@
    - Don't introduce trailing whitespaces!
    - Commit logical changes and whitespace changes separately
    - more at http://www.erlang.se/doc/programming_rules.shtml
+** Event handlers (own_event_handler.erl)
