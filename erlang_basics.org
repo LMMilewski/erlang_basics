@@ -231,9 +231,7 @@ HandlerFun =
         io:format(Fd,"~1000p~n~n",[Trace])
     end.
 ttb:format("ttb_upload-20101113-202517", [{out,"mytrace.log"}, {handler, {HandlerFun, ok}}]).
-  + sys
-  + seq_trace
-  + others: eper, invisio, onvisio
+  + others: sys, seq_trace, eper, invisio, onvisio
 ** The rules
    - use STDLIB if you can (i.e. lists module)
    - isolate "tricky" or "dirty" code into separate modules
