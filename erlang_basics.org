@@ -16,19 +16,6 @@
 **** most of stdlib modules
 **** most interface modules
 **** more advanced tools (i.e. profilers)
-*** The goal
-   We want to build server that is
-**** Fault tolerant
-     + If user process crashes, no other user can be affected
-     + If a feature process crashes user can see only that feature
-       crash (In particular the user should be able to play)
-     + If the machine crashes all users should be able to play on
-       another machine
-**** Live upgradable
-     + We should be able to upgrade the game without shutting it down
-**** Measurable
-     + For every feature we want to know exactly how the user is using
-       it (so we can improve his experience)
 *** Web
 **** http://www.erlang.org/doc/
 **** http://demo.erlang.org/erldoc
